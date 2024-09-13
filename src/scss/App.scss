@@ -1,0 +1,87 @@
+.imgButton:hover {
+  cursor: pointer;
+}
+
+.roleBar {
+  margin-left: 0 !important;
+  //margin-bottom: auto;
+  padding-top: calc(var(--bs-gutter-x) * 0.2);
+  padding-bottom: calc(var(--bs-gutter-x) * 0.2);
+  max-width: 100% !important;
+  background-color: dimgray;
+}
+
+.roleBar .hpBar {
+  text-align: left;
+}
+
+.roleBar .skillBar {
+  height: 100%;
+}
+
+.statusBar{
+  padding-bottom: 7px;
+  text-align: left;
+}
+
+.statusBar img{
+  width: 25%;
+}
+
+.panel {
+  margin-left: 0 !important;
+  margin-bottom: auto;
+  padding-top: calc(var(--bs-gutter-x) * 0.5);
+  max-width: 100% !important;
+}
+
+.panel div img {
+  max-height: 75vh;
+}
+
+.skillPanel {
+  height: 75vh;
+}
+
+.skillPanel img {
+  cursor: pointer;
+  padding: 1px;
+}
+
+.skillPanel div {
+  text-align: left;
+}
+
+.skillBar img {
+  cursor: pointer;
+  padding: 1px;
+  width: 17%;
+}
+
+.progress-bar-vertical {
+  width: 20px;
+  min-height: 100%;
+  margin-left: 60px;
+  float: left;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+  align-items: flex-end;
+  -webkit-align-items: flex-end; /* Safari 7.0+ */
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+  background-color: darkorange;
+}
+
+div {
+  //border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+.App-header {
+  //min-height: 99vh !important;
+}
