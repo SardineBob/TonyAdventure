@@ -1,9 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../App';
 import img職業None from '../images/職業-None.png';
-import img技能突刺 from '../images/技能-突刺.jpg';
-import img技能雙劍夾擊 from '../images/技能-雙劍夾擊.jpg';
-import img技能火焰劍 from '../images/技能-火焰劍.jpg';
+import img技能None from '../images/技能-None.png';
 import img道具紅藥水 from '../images/道具-紅藥水.jpg';
 import iconFist from '../images/fist.svg';
 import iconBook from '../images/book.svg';
@@ -18,8 +16,9 @@ import Row from 'react-bootstrap/Row';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-function RoleBar() {
+export default function RoleBar() {
   const { ctrl, setCtrl, status, setStatus } = useContext(AppContext);
+
   return (
     <>
       <Container className="roleBar">
@@ -51,10 +50,10 @@ function RoleBar() {
           <Col md={4}>
             <div className="d-flex justify-content-center align-items-center gap-2 skillBar">
               <Tooltip id="imgTooltip" style={{ backgroundColor: 'var(--rt-color-error)' }}></Tooltip>
-              <Image src={img技能突刺} className="img-thumbnail" style={{ backgroundColor: 'var(--bs-red)', borderColor: 'var(--bs-red)' }} onClick={() => { setCtrl(item => ({ ...item, panel: "skill" })); }} data-tooltip-id="imgTooltip" data-tooltip-content="攻擊力上升120%，並攻擊三次咻咻殺死你" />
-              <Image src={img技能雙劍夾擊} className="img-thumbnail" style={{ backgroundColor: 'var(--bs-green)', borderColor: 'var(--bs-green)' }} onClick={() => { setCtrl(item => ({ ...item, panel: "skill" })); }} data-tooltip-id="imgTooltip" data-tooltip-content="攻擊力上升220%，並攻擊兩次" />
-              <Image src={img技能火焰劍} className="img-thumbnail" onClick={() => { setCtrl(item => ({ ...item, panel: "skill" })); }} />
-              <Image src={img道具紅藥水} className="img-thumbnail" onClick={() => { setCtrl(item => ({ ...item, panel: "skill" })); }} />
+              {getSkillImage(status.skillNormal, status.jobData.sworderSkills, 'green', () => { setCtrl(item => ({ ...item, panel: "skill" })); })}
+              {getSkillImage(status.skill1, status.jobData.sworderSkills, 'red', () => { setStatus(item => ({ ...item, str: item.str+3 })); })}
+              {getSkillImage(status.skill2, status.jobData.sworderSkills, 'red', () => { setCtrl(item => ({ ...item, panel: "skill" })); })}
+              {getSkillImage(status.skillBig, status.jobData.sworderSkills, 'yellow', () => { setCtrl(item => ({ ...item, panel: "skill" })); })}
               <Image src={img道具紅藥水} className="img-thumbnail" onClick={() => { setCtrl(item => ({ ...item, panel: "skill" })); }} />
             </div>
           </Col>
@@ -64,4 +63,12 @@ function RoleBar() {
   );
 }
 
-export default RoleBar;
+function getSkillImage(skillStatusId, skillCollection, iconBorderColor, onClickEvent) {
+  const skill = {
+    src: skillStatusId ? skillCollection.filter(item => item.id.includes(skillStatusId))[0].image : img技能None,
+    describe: skillStatusId ? skillCollection.filter(item => item.id.includes(skillStatusId))[0].describe : '尚未取得技能'
+  }
+  return (
+    <Image src={skill.src} className="img-thumbnail" style={{ backgroundColor: `var(--bs-${iconBorderColor})`, borderColor: `var(--bs-${iconBorderColor})` }} onClick={onClickEvent} data-tooltip-id="imgTooltip" data-tooltip-content={skill.describe} />
+  )
+}

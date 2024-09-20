@@ -19,7 +19,12 @@ function App() {
     str: 0,
     int: 0,
     agi: 0,
-    vit: 0
+    vit: 0,
+    skillNormal: '003',
+    skill1: '005',
+    skill2: '007',
+    skillBig: '010',
+    item: '',
   });
 
   return (
